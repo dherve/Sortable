@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sortable-demo</title>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+        <!-- move js to the bottom -->
+        <script src = "js/jquery-2.0.2.min.js"></script>
+        <script src = "js/sortable-min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                // define the actual data.
+                // Source info  wikipedia
+                // (http://en.wikipedia.org/wiki/World's_largest_cities)
+                var cities = [
+                    { name : 'Buenos Aires', country : 'Argentina', population : 20 },
+                    { name : 'Dhaka', country : 'Bangladesh', population : 17 },
+                    { name : 'Rio de Janeiro', country : 'Brazil', population : 26 },
+                    { name : 'S&atilde;o Paulo', country : 'Brazil', population : 11 },
+                    { name : 'Beijing', country : 'China', population : 14 },
+                    { name : 'Guangzhou', country : 'China', population : 2 },
+                    { name : 'Shanghai', country : 'China', population : 3},
+                    { name : 'Shenzhen', country : 'China', population : 28},
+                    { name : 'Tianjin', country : 'China', population : 28},
+                    { name : 'Bogot&aacute;', country : 'Colombia', population : 37},
+                    { name : 'Kinshasa', country : 'Democratic Republic of the Congo', population : 30},
+                    { name : 'Cairo', country : 'Egypt', population : 17},
+                    { name : 'Delhi', country : 'India', population : 6},
+                    { name : 'Kolkata', country : 'India', population : 19},
+                    { name : 'Mumbai', country : 'India', population : 12},
+                    { name : 'Jakarta', country : 'Indonesia', population : 3},
+                    { name : 'Tehran', country : 'Iran', population : 22},
+                    { name : 'Osaka', country : 'Japan', population : 15},
+                    { name : 'Tokyo', country : 'Japan', population : 1},
+                    { name : 'Mexico City', country : 'Mexico', population : 7},
+                    { name : 'Lagos', country : 'Nigeria', population : 25},
+                    { name : 'Karachi', country : 'Pakistan', population : 8},
+                    { name : 'Lima', country : 'Peru', population : 32},
+                    { name : 'Manila', country : 'Philippines', population : 9},
+                    { name : 'Moscow', country : 'Russia', population : 16},
+                    { name : 'Seoul', country : 'South Korea', population : 5},
+                    { name : 'Istanbul', country : 'Turkey', population : 23},
+                    { name : 'London', country : 'United Kingdom', population : 24},
+                    { name : 'Los Angeles', country : 'United States', population : 13},
+                    { name : 'New York City', country : 'United States', population : 10}
+                ];
+
+                // Define the table metadata.
+                // this the definition of the table columns along with
+                // the name of the field to which the column is associated to.
+                var _metadata = [
+                        { 
+                            field :  'name', 
+                            type : 'string', 
+                            label : 'City name', 
+                            width : '40%'
+                        },
+                        { 
+                            field :  'country', 
+                            type : 'string', 
+                            label : 'country', 
+                            width : '40%'
+                        },
+                        { 
+                            field :  'population', 
+                            type : 'integer',
+                            label : 'population', 
+                            width : '20%'}
+                    ];
+
+                // Create the table 
+                var _dataTable = Sortable.create(cities, _metadata, "dataTable", 
+                                                 'table_list_items_tr_selected',
+                                                 true, true, true);
+                // Now render
+                _dataTable.render();
+
+                // We can also do the initialization and rendering at the same
+                // time like :
+                //  Sortable.create(data, metadata,<option>).render();
+                // The draw back here is since we have no direct reference to
+                // the object created, we will not be able to call the sortable
+                //  methods to update/delete the data.
+            });
+        </script>
+    </head>
+    <body>
+        <div class = "container">
+            <h1>Sortable Demo</h1>
+            <table id="dataTable" class="table_list_items" cellspacing="0" width="100%">
+                <thead>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
